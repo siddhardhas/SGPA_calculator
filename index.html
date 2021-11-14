@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade calculator</title>
+    <style>
+        body{
+            background-color:paleturquoise;
+        
+        }
+        .subject {
+            margin-left: 10px;
+            padding: 10px;
+        }
+        .credits {
+            
+            margin-left: 10px;
+            padding: 10px;
+        }
+        .con {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin: 0 auto;
+            text-align:center;
+        }
+        .btn {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            margin: 20px auto;       
+         }
+         h2{
+             background-color: white;
+             border: 0.5px solid black;
+             padding: 5px;
+             text-align: center;
+         }
+         label{
+             text-align:center;
+         }
+
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h1>SGPA Calculator</h1>
+        <div>
+            <label>English  :</label>
+            <input type="number" class="subject" placeholder="obtained" />
+            <input type="number" class="credits" placeholder="credits" /> 
+        </div> <br>
+        <div>
+            <label>Sanskrit:</label>
+            <input type="number" class="subject" placeholder="obtained" />
+            <input type="number" class="credits" placeholder="credits" />
+        </div> <br>
+        <div>
+            <label>Maths-1:</label>
+            <input type="number" class="subject" placeholder="obtained" />
+            <input type="number" class="credits" placeholder="credits" />
+        </div> <br>
+        <div>
+            <label>Maths-2:</label>
+            <input type="number" class="subject" placeholder="obtained" />
+            <input type="number" class="credits" placeholder="credits" />
+        </div> <br>
+        <div>
+            <label>Physics  :</label>
+            <input type="number" class="subject" placeholder="obtained" /> 
+            <input type="number" class="credits" placeholder="credits" />
+        </div> <br>
+        <div>
+            <label>Biology :</label>
+            <input type="number" class="subject" placeholder="obtained" />
+            <input type="number" class="credits" placeholder="credits" />
+        </div>
+        <div>
+    </div>
+    <button onclick="getResult()" class="btn">Calculate</button>
+</body>
+<script>
+    let marks = [];
+    let credits = [];
+     function getResult() {
+         let all_marks = Array.from(document.querySelectorAll(".subject"));
+         all_marks.forEach((node) => {
+             marks.push(node.value);
+         });
+         let all_credits = Array.from(document.querySelectorAll(".credits"));
+         all_credits.forEach((node) => {
+             credits.push(node.value);
+         });
+         let sum = 0;
+         let total_credits = 0;
+         for (let i = 0; i < 6; i++) {
+             sum = sum + marks[i] * credits[i];
+             total_credits += parseInt(credits[i]);
+         }
+         const h2 = document.createElement("h2");
+         h2.innerText = sum / total_credits;
+         document.body.append(h2);
+       }
+
+</script>
+</html>
